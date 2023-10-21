@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BillboardIcon : MonoBehaviour
+public class AlwaysLookUp : MonoBehaviour
 {
     public Transform Cam;
 
