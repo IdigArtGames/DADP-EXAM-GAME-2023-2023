@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class AlwaysLookUp : MonoBehaviour
 {
-    public Transform Cam;
+    public Transform icons;
 
     void Update()
     {
-        transform.rotation = Cam.transform.rotation;
+        transform.rotation = icons.transform.rotation;
     }
 }
