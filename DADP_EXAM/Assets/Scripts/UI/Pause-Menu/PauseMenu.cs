@@ -16,7 +16,7 @@ public class PauseMenu : MonoBehaviour
     void Update()
     {
         isUp = !isUp;
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Backspace) || Input.GetKeyDown(KeyCode.Tab))
         {
             pauseMenu.SetActive(isUp);
             

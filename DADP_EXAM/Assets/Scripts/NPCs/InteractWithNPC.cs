@@ -1,18 +1,39 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class InteractWithNPC : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] Transform npcNeck;
+    [SerializeField] Transform playerHead;
 
-    // Update is called once per frame
+    [SerializeField] Canvas canvas;
+
     void Update()
     {
-        
+        float interactRange = 1.5f;
+        Collider[] colliders = Physics.OverlapSphere(transform.position, interactRange);
+
+        bool isPlayerInRange = false;
+        foreach (var collider in colliders)
+        {
+            Npc npc = collider.GetComponent<Npc>();
+            if (npc != null)
+            {
+                isPlayerInRange = true;
+                float lerpSmooth = .01f;
+                Vector3 newPlayer = Vector3.Lerp(npcNeck.position, playerHead.position, lerpSmooth);
+                npcNeck.LookAt(newPlayer);
+                canvas.gameObject.SetActive(false);
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    npc.Interact();
+                }      
+            }
+
+            else if(!isPlayerInRange)
+            {
+                npcNeck.rotation = Quaternion.identity;
+                canvas.gameObject.SetActive(true);
+            }
+        } 
     }
 }
