@@ -6,6 +6,7 @@ public class InteractWithNPC : MonoBehaviour
     [SerializeField] Transform playerHead;
 
     [SerializeField] Canvas canvas;
+    [SerializeField] Canvas dialogueCanvas;
 
     void Update()
     {
@@ -16,13 +17,17 @@ public class InteractWithNPC : MonoBehaviour
         foreach (var collider in colliders)
         {
             Npc npc = collider.GetComponent<Npc>();
-            if (npc != null)
+            if (npc != null) 
             {
                 isPlayerInRange = true;
                 float lerpSmooth = .01f;
                 Vector3 newPlayer = Vector3.Lerp(npcNeck.position, playerHead.position, lerpSmooth);
                 npcNeck.LookAt(newPlayer);
+
+                //canvas
                 canvas.gameObject.SetActive(false);
+                dialogueCanvas.gameObject.SetActive(true);
+
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     npc.Interact();
@@ -32,7 +37,9 @@ public class InteractWithNPC : MonoBehaviour
             else if(!isPlayerInRange)
             {
                 npcNeck.rotation = Quaternion.identity;
+
                 canvas.gameObject.SetActive(true);
+                dialogueCanvas.gameObject.SetActive(false);
             }
         } 
     }

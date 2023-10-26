@@ -49,6 +49,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (DialogueManager.isActive == true)
+            return;
+
         StateHandler();
         isGrounded = Physics.CheckSphere(groundCheck.position, distance, mask);
 

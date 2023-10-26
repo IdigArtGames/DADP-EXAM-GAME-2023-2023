@@ -10,12 +10,15 @@ public class DialogueManager : MonoBehaviour
     Actor[] currentActors;
     int activeMessage = 0;
 
+    public static bool isActive = false;
+
     public void OpenDialogue(Message[] messages, Actor[] actors)
     {
         currentMessages = messages;
         currentActors = actors;
         activeMessage = 0;
-        DisplayDialogue();
+        isActive = true;
+        DisplayDialogue();    
     }
 
     public void DisplayDialogue()
@@ -25,5 +28,20 @@ public class DialogueManager : MonoBehaviour
 
         Actor actorToSpeak = currentActors[messageToDisplay.actorID];
         actorName.text = actorToSpeak.actorName;
+    }
+
+    public void NextMessage()
+    {
+        activeMessage++;
+        if(activeMessage < currentMessages.Length)
+        {
+            DisplayDialogue();
+        }
+        else
+        {
+            print("No active method");
+            isActive = false;
+            activeMessage = 0;
+        }
     }
 }
