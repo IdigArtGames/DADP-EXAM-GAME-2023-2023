@@ -14,9 +14,6 @@ public class LookAround : MonoBehaviour
 
     void Update()
     {
-        if (DialogueManager.isActive == true)
-            return;
-
         var mouseX = Input.GetAxis("Mouse X") * mouseSens * Time.deltaTime;
         var mouseY = Input.GetAxis("Mouse Y") * mouseSens * Time.deltaTime;
 
