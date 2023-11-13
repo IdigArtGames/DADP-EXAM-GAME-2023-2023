@@ -3,9 +3,11 @@ using UnityEngine;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
-    bool isUp;
-
-
+    public GameObject ghostInstructions;
+    public GameObject ghostQuest;
+    public GameObject ShopPanel;
+    public GameObject cookingQuest;
+    public GameObject confirmationScreen;
     void Awake()
     {
         if(pauseMenu.activeSelf)
@@ -14,22 +16,13 @@ public class PauseMenu : MonoBehaviour
         }   
     }
     void Update()
-    {
-        isUp = !isUp;
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Backspace) || Input.GetKeyDown(KeyCode.Tab))
+    {      
+        if(pauseMenu.activeSelf || ghostInstructions.activeSelf || ghostQuest.activeSelf || ShopPanel.activeSelf || cookingQuest.activeSelf || confirmationScreen.activeSelf) 
         {
-            pauseMenu.SetActive(isUp);
-            
-        }
-        
-        if(pauseMenu.activeSelf)
-        {
-            Time.timeScale = 0;
             Cursor.lockState = CursorLockMode.None;
         }
         else
         {
-            Time.timeScale = 1;
             Cursor.lockState = CursorLockMode.Locked;
         }
             

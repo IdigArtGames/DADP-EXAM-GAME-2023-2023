@@ -31,6 +31,14 @@ public class PlayerMovement : MonoBehaviour
     float Range = 1f;
     public Transform detectLadder;
 
+    //FlashLight
+    public GameObject flashLight;
+    bool isOn = false;
+
+    void Awake()
+    {
+        flashLight.SetActive(false);
+    }
     void StateHandler()
     {
         if(Input.GetKey(KeyCode.LeftShift) && isGrounded)
@@ -49,6 +57,13 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            isOn = !isOn;
+            flashLight.SetActive(isOn);
+        }
+
         StateHandler();
         isGrounded = Physics.CheckSphere(groundCheck.position, distance, mask);
 

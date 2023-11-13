@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ChefGhost : MonoBehaviour
+public class ChefGhost : Interactable
 {
     [SerializeField] GameObject dialoguePanel;
     void Start()
@@ -11,5 +11,10 @@ public class ChefGhost : MonoBehaviour
     {
         print("Ghost Chef Located"); 
         dialoguePanel.SetActive(true);
+    }
+
+    protected override void Interact()
+    {
+        TalkWithTheGhostChef();
     }
 }

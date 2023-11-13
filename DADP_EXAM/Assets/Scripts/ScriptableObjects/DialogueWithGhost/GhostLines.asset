@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: GhostLines
   m_EditorClassIdentifier: 
   lines:
-  - 
-  - 
-  - 
+  - Make me my favourite Dish!
+  - 'Ingredients include : 3x Herb which can be found in the park in front of the
+    restaurant  '
+  - 3x Lamb Meat which can be purchased from local street Vendors
+  - And 2x bread which can also be purchased from local street Vendors
+  - After getting all the ingredients, go back to the restaurant and there, behind
+    the counter make the dish.

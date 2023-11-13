@@ -4,7 +4,6 @@ public class CustomCursor : MonoBehaviour
 {
 
     public Texture2D cursorArt;
-    public Transform particles;
 
     void Awake()
     {
